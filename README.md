@@ -1,8 +1,7 @@
 # Description
 The R package scTidyGene is developed for geneating conserved expressed genes and differentially expressed genes in scRNA-seq analysis in 
-a loop manner, which means automatically calculate and generate a list containing conserved expressed genes across all clusters, 
-and could automatically calculate and generate differentially expressed genes accross all clusters. During the calculation 
-and generation the list, this package could deteck and avoid those clusters with less than 3 cells.
+a loop manner, which means automatically calculate and generate list(s) containing conserved expressed genes and/or differentially expressed genes across all clusters, 
+. During the calculation and generation the list, this package could deteck and avoid those clusters with less than 3 cells.
 
 # Installation
 library(devtools) </br>
