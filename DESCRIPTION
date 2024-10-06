@@ -1,0 +1,15 @@
+Package: scTidyGene
+Type: Package
+Title: Calculation of conserved expressed genes and differentially expressed genes across conditions/groups in a loop manner 
+Version: 0.1.0
+Author: Prof. Dr. rer. nat. Lingzhang Meng
+Maintainer: The package maintainer <lzmeng@gxams.org.cn>
+Description: This package is developed to generate conserved gene list and DEG list in a loop and tidy manner.
+License: No license
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  Seurat, 
+  progress,
+  dplyr
+RoxygenNote: 7.3.2
