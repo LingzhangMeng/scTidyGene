@@ -57,10 +57,10 @@ View(DEGs.pos) </br></br>
 
 calculate differentially expressed genes and generate a list including all gene even those with p value >= 0.05 </br></br>
 
-DEGs.pos <- scDEGs(Cell.integrated, ident.1 = "Wounded", ident.2 = "Control", group.by = "condition", </br>
+DEGs.all <- scDEGs(Cell.integrated, ident.1 = "Wounded", ident.2 = "Control", group.by = "condition", </br>
 min.pct = 0.25, logfc.threshold = 0.25, only.pos = FALSE) </br></br>
 check the gene list with script below: </br>
-View(DEGs.pos) </br></br>
+View(DEGs.all) </br></br>
 
 
 
