@@ -28,7 +28,7 @@ ident.1: Character. Name of the first group, numerator in the calculation </br>
 ident.2: Character. Name of the second group, denominator in the calculation </br>
 group.by: Character. Grouping factor </br>
 min.pct: Number. Genes expressed in minimal percentage of cells. 0.25 was set as default in the package,  </br>
-but it could be customized depends user(s).   </br>
+but it could be customized by user(s).   </br>
 logfc.threshold: number: number, fold change of gene expression level in minimal percentage of cells.  </br>
 0.25 was set as default in the package, but it could be customized depends user(s). </br>
 only.pos: TRUE/FALSE. Set it to TRUE to select differentially expressed gene list with p value < 0.05; </br>
