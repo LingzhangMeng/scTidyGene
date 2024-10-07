@@ -43,25 +43,19 @@ Wounded$condition <- "Wounded"     </br>
 * After integration, I generated a seurat object named "Cell.integrated". </br> 
 Thirdly, perform integration following standard workflow.</br></br>
 
-Then </br> </br>
-1. calculate conserved expressed genes and generate a list </br></br>
+Then </br> 
+1. calculate conserved expressed genes and generate a list </br>
+conserved.gene <- scCEGs(Cell.integrated, grouping.var = "condition") </br>
+View(conserved.gene) </br>
 
-conserved.gene <- scCEGs(Cell.integrated, grouping.var = "condition") </br></br>
-check the gene list with script below: </br>
-View(conserved.gene) </br></br>
-
-2. calculate differentially expressed genes and generate a list including those with p value < 0.05 </br></br>
-
+2. calculate differentially expressed genes and generate a list including those with p value < 0.05 </br>
 DEGs.pos <- scDEGs(Cell.integrated, ident.1 = "Wounded", ident.2 = "Control", group.by = "condition", </br>
-min.pct = 0.25, logfc.threshold = 0.25, only.pos = TRUE) </br></br>
-check the gene list with script below: </br>
+min.pct = 0.25, logfc.threshold = 0.25, only.pos = TRUE) </br>
 View(DEGs.pos) </br></br>
 
-3. calculate differentially expressed genes and generate a list including all gene even those with p value >= 0.05 </br></br>
-
+3. calculate differentially expressed genes and generate a list including all gene even those with p value >= 0.05 </br>
 DEGs.all <- scDEGs(Cell.integrated, ident.1 = "Wounded", ident.2 = "Control", group.by = "condition", </br>
-min.pct = 0.25, logfc.threshold = 0.25, only.pos = FALSE) </br></br>
-check the gene list with script below: </br>
+min.pct = 0.25, logfc.threshold = 0.25, only.pos = FALSE) </br>
 View(DEGs.all) </br></br>
 
 
