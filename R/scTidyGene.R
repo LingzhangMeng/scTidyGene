@@ -1,6 +1,5 @@
 
 #' Generate a tidy list of conserved expressed genes
-#'
 #' @param seu_obj A Seurat object containing single-cell RNA-seq data.
 #' @param ident.1 The identity of the cluster to analyze.
 #' @param grouping.var The variable to group by when finding conserved markers.
@@ -65,7 +64,6 @@ return(combined_results)
 
 
 #' Generate a tidy list of differentially expressed genes
-#'
 #' @param seu_obj A Seurat object containing single-cell RNA-seq data.
 #' @param ident.1 The identity of the first condition to compare.
 #' @param ident.2 The identity of the second condition to compare.
@@ -76,7 +74,6 @@ return(combined_results)
 #'
 #' @return A data frame of differentially expressed genes across clusters.
 #' @export
-#'
 #' @examples
 #' # Example usage will be added in a future release.
 #' # result <- scDEGs(seu_obj, "ConditionA", "ConditionB", group.by = "group_var")
@@ -84,6 +81,7 @@ return(combined_results)
 #' @importFrom Seurat FindMarkers
 #' @importFrom dplyr bind_rows
 #' @importFrom progress progress_bar
+#' @importFrom dplyr relocate
 
 scDEGs <- function(seu_obj, ident.1, ident.2, group.by, only.pos = TRUE,
                    min.pct = 0.25, logfc.threshold = 0.25) {
@@ -130,7 +128,9 @@ scDEGs <- function(seu_obj, ident.1, ident.2, group.by, only.pos = TRUE,
 
       # Add columns for cluster identifier and gene names
       markers$Cell_cluster <- as.character(cluster)
+
       markers$gene <- rownames(markers)
+
       rownames(markers) <- NULL
 
       # Store the results in the list
@@ -144,7 +144,11 @@ scDEGs <- function(seu_obj, ident.1, ident.2, group.by, only.pos = TRUE,
 
   # Combine all cluster markers into a single data frame
   combined_markers <- dplyr::bind_rows(cluster_markers)
+
   rownames(combined_markers) <- NULL
+
+  # Re-arrange columns: move Cell_clust to 1st column, gene to 2ed column
+  combined_markers <- combined_markers %>% dplyr::relocate(Cell_cluster, .before = 1) %>% dplyr::relocate(gene, .after = Cell_cluster)
 
   return(combined_markers)
 }
