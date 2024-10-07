@@ -34,14 +34,15 @@ logfc.threshold: number: number, fold change of gene expression level in minimal
 only.pos: TRUE/FALSE. Set it to TRUE to select differentially expressed gene list with p value < 0.05; </br>
 Set it to FALSE to select all gene list even those with p value >= 0.05. "only.pos = TRUE" was set default in this package.</br>
 # Examples
-Data preparaton </br>
-I have created a seurat object with control biopsies (named Control) and Wounded biopsies with seurat object (named Wounded).</br>
-Before integration, I added assigned new information with the below scripts: </br>
+Data Preparaton </br>
+Firstly, I have created a seurat object with control biopsies (named Control) and a seurat object with Wounded biopsies (named Wounded).</br>
+Secondly, I added assigned new information before integration with the below scripts: </br>
 Control$condition <- "Control"     </br>
 Wounded$condition <- "Wounded"     </br>
 * Please note that I used "condition" as grouping factor in this tutorial;  </br>
-* After integration, I generated a seurat object named "Cell.integrated". </br> </br>
-
+* After integration, I generated a seurat object named "Cell.integrated". </br> 
+Thirdly, perform integration following standard workflow.</br>
+Then </br> </br>
 calculate conserved expressed genes and generate a list </br></br>
 
 conserved.gene <- scCEGs(Cell.integrated, grouping.var = "condition") </br></br>
