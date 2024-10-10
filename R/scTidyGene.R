@@ -28,9 +28,9 @@ for (cluster in clusters) {
   # Find conserved markers for the current cluster
   markers <- Seurat::FindConservedMarkers(seu_obj, ident.1 = cluster, grouping.var = grouping.var, verbose = T)
 
-  # Add Cell_Cluster and gene in the first 2 columns
-  markers <- markers %>% dplyr::mutate(Cell_Cluster = cluster, gene = rownames(markers)) %>%
-    dplyr::select(Cell_Cluster, gene, everything())
+  # Add CellType and gene in the first 2 columns
+  markers <- markers %>% dplyr::mutate(CellType = cluster, gene = rownames(markers)) %>%
+    dplyr::select(CellType, gene, everything())
 
   # remove rownames
   rownames(markers) <- NULL
@@ -127,7 +127,7 @@ scDEGs <- function(seu_obj, ident.1, ident.2, group.by, only.pos = TRUE,
                                      logfc.threshold = logfc.threshold)
 
       # Add columns for cluster identifier and gene names
-      markers$Cell_cluster <- as.character(cluster)
+      markers$CellType <- as.character(cluster)
 
       markers$gene <- rownames(markers)
 
@@ -148,7 +148,7 @@ scDEGs <- function(seu_obj, ident.1, ident.2, group.by, only.pos = TRUE,
   rownames(combined_markers) <- NULL
 
   # Re-arrange columns: move Cell_clust to 1st column, gene to 2ed column
-  combined_markers <- combined_markers %>% dplyr::relocate(Cell_cluster, .before = 1) %>% dplyr::relocate(gene, .after = Cell_cluster)
+  combined_markers <- combined_markers %>% dplyr::relocate(CellType, .before = 1) %>% dplyr::relocate(gene, .after = CellType)
 
   return(combined_markers)
 }
